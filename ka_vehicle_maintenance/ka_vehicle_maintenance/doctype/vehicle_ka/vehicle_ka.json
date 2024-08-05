@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:{model}-{year}-{license_plate}",
  "creation": "2024-08-05 11:30:15.838128",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -12,6 +13,8 @@
   "state",
   "current_km",
   "last_visit_date",
+  "section_break_ubes",
+  "visits",
   "insurance_section",
   "end_date",
   "ownership_section",
@@ -21,17 +24,23 @@
   {
    "fieldname": "license_plate",
    "fieldtype": "Int",
-   "label": "License Plate"
+   "in_list_view": 1,
+   "label": "License Plate",
+   "reqd": 1
   },
   {
    "fieldname": "model",
    "fieldtype": "Data",
-   "label": "Model"
+   "in_list_view": 1,
+   "label": "Model",
+   "reqd": 1
   },
   {
    "fieldname": "year",
    "fieldtype": "Int",
-   "label": "Year"
+   "in_list_view": 1,
+   "label": "Year",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_xtky",
@@ -45,7 +54,9 @@
   {
    "fieldname": "current_km",
    "fieldtype": "Int",
-   "label": "Current KM"
+   "in_list_view": 1,
+   "label": "Current KM",
+   "reqd": 1
   },
   {
    "fieldname": "last_visit_date",
@@ -71,14 +82,25 @@
    "fieldname": "vehicle_owner",
    "fieldtype": "Data",
    "label": "Vehicle Owner"
+  },
+  {
+   "fieldname": "visits",
+   "fieldtype": "Table",
+   "label": "Visits",
+   "options": "Vehicle Visit KA"
+  },
+  {
+   "fieldname": "section_break_ubes",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-05 11:43:16.456508",
+ "modified": "2024-08-05 13:13:11.183678",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Vehicle KA",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -94,7 +116,9 @@
    "write": 1
   }
  ],
+ "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }
