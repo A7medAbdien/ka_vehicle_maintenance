@@ -129,6 +129,13 @@ app_license = "mit"
 # 		"on_trash": "method"
 # 	}
 # }
+doc_events = {
+    "Vehicle KA": {},
+    "Vehicle Visst KA": {},
+    "Maintenance Visit KA": {
+        "on_update": "ka_vehicle_maintenance.events.on_maintenance_update",
+    },
+}
 
 # Scheduled Tasks
 # ---------------
@@ -226,4 +233,3 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-

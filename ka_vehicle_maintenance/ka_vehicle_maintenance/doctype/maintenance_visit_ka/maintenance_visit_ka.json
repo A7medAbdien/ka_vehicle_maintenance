@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{vehicle}-{DD}-{MM}-{YY}",
+ "autoname": "format:{vehicle}-{DD}-{MM}-{YY}-.####",
  "creation": "2024-08-05 11:44:22.407372",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -120,7 +120,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-05 13:22:17.771023",
+ "modified": "2024-08-05 16:54:51.747448",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Maintenance Visit KA",
