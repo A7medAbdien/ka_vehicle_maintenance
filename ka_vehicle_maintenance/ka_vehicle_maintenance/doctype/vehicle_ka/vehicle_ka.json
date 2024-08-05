@@ -49,7 +49,8 @@
   {
    "fieldname": "state",
    "fieldtype": "Select",
-   "label": "State"
+   "label": "State",
+   "options": "\nUpcoming\nServiced\nPending Approval\nNotified\nOverdue\nUnchecked\nEarly Notified"
   },
   {
    "fieldname": "current_km",
@@ -96,7 +97,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-05 13:13:11.183678",
+ "modified": "2024-08-05 13:22:16.130925",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Vehicle KA",
