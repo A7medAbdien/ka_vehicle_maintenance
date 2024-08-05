@@ -16,9 +16,9 @@ next_maintaning_date
 """Vehicle Visit
 parent                  [Maintenance Visit]
 Vehicle                 [Vehicle]
-visit_year
-state
-last_km
+visit_year              
+state                   
+last_km                 
 new_km
 reminding_date
 maintaning_date
@@ -39,34 +39,33 @@ def on_maintenance_update(doc, event):
 
 def update_vehicle_visit(doc):
 
-    print("\n\n\n here")
-    print("\n\n\n")
     # Check if the document exists
-    # if frappe.db.exists("Vehicle Visit KA", doc.name):
-    #     vv = frappe.get_doc("Vehicle Visit KA", doc.name)
-    #     vv.update(
-    #         {
-    #             k: v
-    #             for k, v in doc.as_dict().items()
-    #             if k not in ["doctype", "amended_from"]
-    #         }
-    #     )
-    #     # vv.save()
-    #     print("\n\n\n save")
-    #     print(vv.as_dict())
-    # else:
-    #     vv = frappe.new_doc("Vehicle Visit KA")
-    #     vv.parent = doc.name
-    #     vv.update(
-    #         {
-    #             k: v
-    #             for k, v in doc.as_dict().items()
-    #             if k not in ["doctype", "amended_from"]
-    #         }
-    #     )
-    #     vv.insert()
-    #     print("\n\n\n insert")
-    #     print(vv.as_dict())
+    if frappe.db.exists("Vehicle Visit KA", doc.name):
+        vv = frappe.get_doc("Vehicle Visit KA", doc.name)
+        vv.parent = doc.name
+        vv.vehicle = doc.vehicle
+        vv.vehicle_year = doc.vehicle_year
+        vv.state = doc.state
+        vv.last_km = doc.last_km
+        vv.new_km = doc.new_km
+        vv.reminding_date = doc.reminding_date
+        vv.maintenance_date = doc.maintenance_date
+        vv.attachment = doc.attachment
+        vv.next_reminding_date = doc.next_reminding_date
+        vv.next_maintenance_date = doc.next_maintenance_date
+        vv.save()
+
+    else:
+        vv = frappe.new_doc("Vehicle Visit KA")
+        vv.parent = doc.name
+        vv.update(
+            {
+                k: v
+                for k, v in doc.as_dict().items()
+                if k not in ["doctype", "amended_from", "__unsaved", "creation"]
+            }
+        )
+        vv.insert()
 
 
 def on_state_filed_change(doc):
