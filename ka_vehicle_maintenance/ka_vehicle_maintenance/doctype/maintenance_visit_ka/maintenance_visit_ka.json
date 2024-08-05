@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-08-05 11:44:22.407372",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_ybwq",
+  "amended_from",
+  "_section",
+  "vehicle",
+  "vehicle_year",
+  "last_km",
+  "new_km",
+  "column_break_rcbc",
+  "reminding_date",
+  "maintenance_date",
+  "state",
+  "attachment",
+  "next_visit_section",
+  "next_reminding_date",
+  "column_break_gzvf",
+  "next_maintenance_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_ybwq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Maintenance Visit KA",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "_section",
+   "fieldtype": "Section Break",
+   "label": " "
+  },
+  {
+   "fieldname": "vehicle",
+   "fieldtype": "Link",
+   "label": "Vehicle",
+   "options": "Vehicle KA"
+  },
+  {
+   "fieldname": "vehicle_year",
+   "fieldtype": "Int",
+   "label": "Vehicle Year"
+  },
+  {
+   "fieldname": "last_km",
+   "fieldtype": "Int",
+   "label": "Last KM"
+  },
+  {
+   "fieldname": "new_km",
+   "fieldtype": "Int",
+   "label": "New KM"
+  },
+  {
+   "fieldname": "column_break_rcbc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reminding_date",
+   "fieldtype": "Data",
+   "label": "Reminding Date"
+  },
+  {
+   "fieldname": "maintenance_date",
+   "fieldtype": "Data",
+   "label": "Maintenance Date"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Select",
+   "label": "State"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "label": "Attachment"
+  },
+  {
+   "fieldname": "next_visit_section",
+   "fieldtype": "Section Break",
+   "label": "Next Visit"
+  },
+  {
+   "fieldname": "next_reminding_date",
+   "fieldtype": "Date",
+   "label": "Next Reminding Date"
+  },
+  {
+   "fieldname": "column_break_gzvf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "next_maintenance_date",
+   "fieldtype": "Date",
+   "label": "Next Maintenance Date"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-08-05 11:55:53.638010",
+ "modified_by": "Administrator",
+ "module": "KA Vehicle Maintenance",
+ "name": "Maintenance Visit KA",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
