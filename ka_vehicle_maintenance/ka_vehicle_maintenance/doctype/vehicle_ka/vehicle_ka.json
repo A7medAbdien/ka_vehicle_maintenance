@@ -88,7 +88,8 @@
    "fieldname": "visits",
    "fieldtype": "Table",
    "label": "Visits",
-   "options": "Vehicle Visit KA"
+   "options": "Vehicle Visit KA",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_ubes",
@@ -97,7 +98,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-05 13:22:16.130925",
+ "modified": "2024-08-06 15:03:04.162409",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Vehicle KA",

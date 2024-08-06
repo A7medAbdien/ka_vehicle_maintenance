@@ -105,13 +105,14 @@
    "fieldname": "maintenance_visit",
    "fieldtype": "Link",
    "label": "Maintenance Visit",
-   "options": "Maintenance Visit KA"
+   "options": "Maintenance Visit KA",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-08-06 11:39:46.940528",
+ "modified": "2024-08-06 15:03:46.444192",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Vehicle Visit KA",
