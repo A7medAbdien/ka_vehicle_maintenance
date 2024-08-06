@@ -27,18 +27,45 @@ next_reminding_date
 next_maintaning_date
 """
 
+"""Vehicle
+lincense_plate
+model
+year
+vehicle_type
+state
+current_km
+last_visit_date
+visits
+insurance
+end_date
+ownership
+vehicle_owner
+"""
 
-def exclude_keys(doc, keys):
-    return {k: v for k, v in doc.items() if k not in keys}
+
+# Vehicle Visit Events
+def on_vehicle_visit_update(doc, event):
+    # update visits table in vehicle
+    update_vehicle(doc)
 
 
+def update_vehicle(doc):
+    pass
+
+
+# Maintenace Visit Events
 def on_maintenance_update(doc, event):
     # update/create viehicle visit
     update_vehicle_visit(doc)
 
 
-def update_vehicle_visit(doc):
+# def on_maintenance_delete(doc, event):
+#     # delete vehicle visit
+#     if frappe.db.exists("Vehicle Visit KA", doc.name):
+#         frappe.delete_doc("Vehicle Visit KA", doc.name)
 
+
+def update_vehicle_visit(doc):
     # Check if the document exists
     if frappe.db.exists("Vehicle Visit KA", doc.name):
         vv = frappe.get_doc("Vehicle Visit KA", doc.name)
