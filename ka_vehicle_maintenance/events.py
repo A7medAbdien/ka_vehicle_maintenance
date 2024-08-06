@@ -1,4 +1,8 @@
 import frappe
+from frappe.utils import add_to_date
+from ka_vehicle_maintenance.utils.AttrDict import AttrDict
+import json
+
 
 """Maintenance Visit
 Vehicle
@@ -201,11 +205,33 @@ def on_state_filed_change(doc):
     print(doc)
 
     """
-    Upcoming
-    Serviced
     Pending Approval
-    Notified
-    Overdue
     Unchecked
+    Upcoming
+    
+    Serviced
+    Overdue
+    
+    Notified
     Early Notified
     """
+
+
+@frappe.whitelist()
+def create_new_maintenance_visit(doc, reminding_date=None):
+    if isinstance(doc, str):
+        doc = AttrDict(json.loads(doc))
+    elif isinstance(doc, dict):
+        doc = AttrDict(doc)
+
+    mv = frappe.new_doc("Maintenance Visit KA")
+    mv.vehicle = doc.vehicle
+    mv.vehicle_year = doc.vehicle_year
+    mv.state = "Upcoming"
+    mv.last_km = doc.new_km
+    mv.reminding_date = reminding_date
+    mv.maintenance_date = add_to_date(reminding_date, days=3)
+    mv.save()
+    # show success message
+    frappe.msgprint("New Maintenance Visit created successfully.")
+    return mv
