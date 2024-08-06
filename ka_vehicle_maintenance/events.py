@@ -47,57 +47,87 @@ vehicle_owner
 def on_visit_update(doc, event):
     print("\n\n\n on_visit_update")
     # update visits table in vehicle
-    update_vehicle(doc)
+    # update_vehicle(doc)
 
 
 def update_vehicle(doc):
-    # 1. get all vehicle visits for this vehicle ordered by maintenance date
-    # and update (visits) table
-    visits = []
-    visits = get_vehicle_visits(doc.vehicle)
+    # 0. get vehicle
+    vehicle = frappe.get_doc("Vehicle KA", doc.vehicle)
+    if vehicle is None:
+        frappe.throw("Vehicle not found")
+        return
     print("\n\n")
-    print("visits" * 5)
-    print(visits)
-    # if len(visits) > 0:
-    #     frappe.db.set_value("Vehicle", doc.vehicle, "visits", visits)
+    print(vehicle)
+    # 1. update/create vehicle visit for vehicle
+    update_vehicle_visit_for_vehicle(doc)
 
     # # 2. get latest vehicle visit state and update vehicle field (state)
-    # latest_visit = get_latest_visit(doc.vehicle)
+    # latest_visit = get_latest_visit(vehicle_name)
     # print("\n\n")
     # print("latest_visit" * 5)
     # print(latest_visit)
     # if latest_visit:
-    #     frappe.db.set_value("Vehicle", doc.vehicle, "state", latest_visit.state)
+    #     frappe.db.set_value("Vehicle", vehicle_name, "state", latest_visit.state)
 
     # # 3. get latest vehicle visit with status "serviced"
     # # and update filed (current_km and last_visit_date)
-    # latest_serviced_visit = get_latest_serviced_visit(doc.vehicle)
+    # latest_serviced_visit = get_latest_serviced_visit(vehicle_name)
     # print("\n\n")
     # print("latest_serviced_visit" * 5)
     # print(latest_serviced_visit)
     # if latest_serviced_visit:
     #     frappe.db.set_value(
     #         "Vehicle",
-    #         doc.vehicle,
+    #         vehicle_name,
     #         "current_km",
     #         latest_serviced_visit.new_km,
     #     )
     #     frappe.db.set_value(
     #         "Vehicle",
-    #         doc.vehicle,
+    #         vehicle_name,
     #         "last_visit_date",
     #         latest_serviced_visit.maintenance_date,
     #     )
 
 
-def get_vehicle_visits(vehicle):
-    visits = frappe.get_all(
+def update_vehicle_visit_for_vehicle(doc):
+    print("\n\n\n update_vehicle_visit from vehicle")
+    vv_list = frappe.get_all(
         "Vehicle Visit KA",
-        filters={"vehicle": vehicle},
+        filters={
+            "vehicle": doc.vehicle,
+            "maintenance_visit": doc.name,
+            "parenttype": "Vehicle KA",
+        },
         order_by="maintenance_date",
-        # fields=["maintenance_date", "state"],
+        fields=["*"],
     )
-    return visits
+    print(vv_list)
+    if len(vv_list) > 1:
+        frappe.throw(
+            "Multiple vehicle visits found for the same vehicle and maintenance visit."
+        )
+        return None
+    elif len(vv_list) == 0:
+        vv = frappe.new_doc("Vehicle Visit KA")
+    else:
+        vv = vv_list[0]
+        vv = frappe.get_doc("Vehicle Visit KA", vv.name)
+    vv.parent = doc.vehicle
+    vv.parentfield = "visits"
+    vv.parenttype = "Vehicle KA"
+    vv.vehicle = doc.vehicle
+    vv.maintenance_visit = doc.name
+    vv.vehicle_year = doc.vehicle_year
+    vv.state = doc.state
+    vv.last_km = doc.last_km
+    vv.new_km = doc.new_km
+    vv.reminding_date = doc.reminding_date
+    vv.maintenance_date = doc.maintenance_date
+    vv.attachment = doc.attachment
+    vv.next_reminding_date = doc.next_reminding_date
+    vv.next_maintenance_date = doc.next_maintenance_date
+    vv.save()
 
 
 def get_latest_visit(vehicle):
@@ -128,8 +158,10 @@ def get_latest_serviced_visit(vehicle):
 def on_maintenance_update(doc, event):
     print("\n\n\n on_maintenance_update")
     # update/create viehicle visit
-    vv = update_vehicle_visit(doc)
-    doc.visits = [vv]
+    vv_from_maintenance = update_vehicle_visit_for_maintenance(doc)
+    doc.visits = [vv_from_maintenance]
+    print("\n\n\n update_vehicle_visit")
+    update_vehicle(doc)
 
 
 # def on_maintenance_delete(doc, event):
@@ -138,7 +170,7 @@ def on_maintenance_update(doc, event):
 #         frappe.delete_doc("Vehicle Visit KA", doc.name)
 
 
-def update_vehicle_visit(doc):
+def update_vehicle_visit_for_maintenance(doc):
     # Check if the document exists
     vv_list = frappe.get_all(
         "Vehicle Visit KA",
@@ -157,7 +189,7 @@ def update_vehicle_visit(doc):
         vv = frappe.get_doc("Vehicle Visit KA", vv.name)
 
     vv.vehicle = doc.vehicle
-    vv.maintenacne_visit = doc.name
+    vv.maintenance_visit = doc.name
     vv.vehicle_year = doc.vehicle_year
     vv.state = doc.state
     vv.last_km = doc.last_km
