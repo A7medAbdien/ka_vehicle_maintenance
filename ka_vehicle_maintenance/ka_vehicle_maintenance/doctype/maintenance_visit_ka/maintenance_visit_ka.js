@@ -28,8 +28,27 @@ frappe.ui.form.on("Maintenance Visit KA", {
 
             case "Notified":
             case "Early Notified":
-                console.log("Show a dialog, to get the remininding date");
-                console.log("Create New MV, with the remininding date");
+                frappe.prompt(
+                    {
+                        label: __("Reminding Date"),
+                        fieldname: "date",
+                        fieldtype: "Date",
+                    },
+                    (values) => {
+                        console.log(values.date);
+                        frm.set_value("next_reminding_date", values.date);
+                        if (!frm.doc.next_reminding_date || !values.date)
+                            frappe.throw({
+                                title: __("Missing Next Reminding Date"),
+                                message: __(
+                                    "Please enter the next reminding date"
+                                ),
+                            });
+                        createNewMV(frm, values.date);
+                    },
+                    __("Next Reminding Date")
+                );
+
                 break;
 
             default:
