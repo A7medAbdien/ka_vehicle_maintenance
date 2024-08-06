@@ -131,7 +131,9 @@ app_license = "mit"
 # }
 doc_events = {
     "Vehicle KA": {},
-    "Vehicle Visst KA": {},
+    "Vehicle Visit KA": {
+        "on_update": "ka_vehicle_maintenance.events.on_visit_update",
+    },
     "Maintenance Visit KA": {
         "on_update": "ka_vehicle_maintenance.events.on_maintenance_update",
     },
