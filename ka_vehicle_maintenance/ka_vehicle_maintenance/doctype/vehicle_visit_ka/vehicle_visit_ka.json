@@ -19,7 +19,10 @@
   "next_visit_section",
   "next_reminding_date",
   "column_break_gzvf",
-  "next_maintenance_date"
+  "next_maintenance_date",
+  "section_break_pdms",
+  "checked_at",
+  "submitted_at"
  ],
  "fields": [
   {
@@ -110,12 +113,26 @@
    "label": "Maintenance Visit",
    "options": "Maintenance Visit KA",
    "reqd": 1
+  },
+  {
+   "fieldname": "section_break_pdms",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "checked_at",
+   "fieldtype": "Datetime",
+   "label": "Checked At"
+  },
+  {
+   "fieldname": "submitted_at",
+   "fieldtype": "Datetime",
+   "label": "Submitted At"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-08-06 16:00:28.020683",
+ "modified": "2024-08-06 18:50:36.804499",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Vehicle Visit KA",
