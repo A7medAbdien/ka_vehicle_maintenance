@@ -1,49 +1,41 @@
 import frappe
-from frappe.utils import nowdate
+from frappe.utils import nowdate, add_days
+from frappe.query_builder import DocType
 
 
-def update_state():
+def update_state_and_send_notifications():
     today = nowdate()
 
-    docs = frappe.get_all(
-        "Maintenance Visit KA",
-        filters={"docstatus": 0, "state": "Upcoming", "reminding_date": today},
-    )
+    # Define your DocType for Query Builder
+    MaintenanceVisitKA = DocType("Maintenance Visit KA")
 
-    docs_len = len(docs)
-    if docs_len == 0:
-        return
-
-    # # send email
-    # frappe.sendmail(
-    #     recipients=["ahmed.abdin@shahic.net"],
-    #     subject="Test Notification",
-    #     message="This is a test notification",
-    # )
-
-    for index, doc in enumerate(docs, start=1):
-        mv = frappe.get_doc("Maintenance Visit KA", doc.name)
-        mv.db_set("state", "Unchecked", commit=True)
-
-        # Create a notification log
-        n = frappe.new_doc("Notification Log")
-        n.subject = (
-            f"Reminder {index} of {docs_len} Maintenance Visit Reminder for {today}"
+    # Fetch all documents that are not submitted and have the state "Upcoming" and reminding_date < today
+    docs = (
+        frappe.qb.from_(MaintenanceVisitKA)
+        .select(MaintenanceVisitKA.name)
+        .where(
+            (MaintenanceVisitKA.docstatus == 0)
+            & (MaintenanceVisitKA.state == "Upcoming")
+            & (MaintenanceVisitKA.reminding_date <= today)
         )
+    ).run(as_dict=True)
+
+    # Update the state of each document and send notification
+    docs_len = len(docs)
+    for index, doc in enumerate(docs, start=1):
+        # Update the state
+        frappe.db.set_value("Maintenance Visit KA", doc.name, "state", "Unchecked")
+
+        # Create a new notification log
+        n = frappe.new_doc("Notification Log")
+        n.subject = f"Reminder {index} of {docs_len} Maintenance Visit Reminder"
         n.email_content = "This is a reminder for your maintenance visit"
         n.document_type = "Maintenance Visit KA"
         n.document_name = doc.name
         n.insert()
 
-        # Update vehicle visit state
-        vv_list = frappe.get_all(
-            "Vehicle Visit KA",
-            filters={"maintenance_visit": mv.name},
-        )
-        for vv in vv_list:
-            vv_doc = frappe.get_doc("Vehicle Visit KA", vv.name)
-            vv_doc.db_set("state", "Unchecked", commit=True)
+    frappe.db.commit()
 
 
-# bench enable-scheduler
-# bench execute ka_vehicle_maintenance.schedules.update_state
+def update_state():
+    update_state_and_send_notifications()
