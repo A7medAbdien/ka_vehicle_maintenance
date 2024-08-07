@@ -2,7 +2,18 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Maintenance Visit KA", {
-    refresh(frm) {},
+    before_save(frm) {
+        if (!frm.doc.maintenance_date && frm.doc.reminding_date)
+            frm.doc.maintenance_date = frappe.datetime.add_days(
+                frm.doc.reminding_date,
+                3
+            );
+        if (!frm.doc.reminding_date && frm.doc.maintenance_date)
+            frm.doc.reminding_date = frappe.datetime.add_days(
+                frm.doc.maintenance_date,
+                -3
+            );
+    },
     after_save(frm) {
         if (frm.doc.docstatus == 0 && !frm.doc.checked_at) {
             switch (frm.doc.state) {
