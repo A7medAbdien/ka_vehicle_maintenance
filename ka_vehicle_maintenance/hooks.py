@@ -159,6 +159,8 @@ doc_events = {
 # 		"ka_vehicle_maintenance.tasks.monthly"
 # 	],
 # }
+scheduler_events = {"daily": ["ka_vehicle_maintenance.schedules.update_state"]}
+
 
 # Testing
 # -------
