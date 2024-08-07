@@ -3,6 +3,11 @@
 
 frappe.ui.form.on("Vehicle KA", {
     refresh(frm) {
+        // Custom buttons in groups
+        frm.add_custom_button("Test", () => {
+            console.log("HI");
+            someFuntion();
+        });
         reorderChildTable(frm);
     },
 });
@@ -24,4 +29,15 @@ const reorderChildTable = (frm) => {
 
     // Refresh the field to reflect changes
     frm.refresh_field("visits");
+};
+
+const someFuntion = () => {
+    frappe.call({
+        method: "ka_vehicle_maintenance.events.send_notification",
+        // callback: function (response) {
+        //     if (response.message) {
+        //         frappe.msgprint(__("Notification Sent Successfully"));
+        //     }
+        // },
+    });
 };

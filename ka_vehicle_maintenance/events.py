@@ -52,6 +52,19 @@ vehicle_owner
 """
 
 
+@frappe.whitelist()
+def send_notification():
+    # send notification
+    n = frappe.new_doc("Notification Log")
+    n.subject = "Test Notification"
+    n.email_content = "This is a test notification"
+    n.document_type = "Vehicle KA"
+    n.document_name = "Test-2000-123124"
+
+    n.insert()
+    print("\n\n\n Notification sent")
+
+
 # Maintenance Visit Events
 def on_maintenance_delete(doc, event):
     doc.visits = []
