@@ -15,6 +15,8 @@ maintaning_date
 attachment
 next_reminding_date
 next_maintaning_date
+checked_at
+submited_at
 """
 
 """Vehicle Visit
@@ -29,6 +31,9 @@ maintaning_date
 attachment
 next_reminding_date
 next_maintaning_date
+checked_at
+submited_at
+document_status
 """
 
 """Vehicle
