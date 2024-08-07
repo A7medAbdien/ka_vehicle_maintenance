@@ -181,7 +181,6 @@ def update_vehicle_visit_for_vehicle(doc):
     vv.maintenance_date = doc.maintenance_date
     vv.attachment = doc.attachment
     vv.next_reminding_date = doc.next_reminding_date
-    vv.next_maintenance_date = doc.next_maintenance_date
     vv.checked_at = doc.checked_at
     vv.submitted_at = doc.submitted_at
     vv.document_status = doc.docstatus
@@ -216,7 +215,6 @@ def update_vehicle_visit_for_maintenance(doc):
     vv.maintenance_date = doc.maintenance_date
     vv.attachment = doc.attachment
     vv.next_reminding_date = doc.next_reminding_date
-    vv.next_maintenance_date = doc.next_maintenance_date
     vv.checked_at = doc.checked_at
     vv.submitted_at = doc.submitted_at
     vv.document_status = doc.docstatus

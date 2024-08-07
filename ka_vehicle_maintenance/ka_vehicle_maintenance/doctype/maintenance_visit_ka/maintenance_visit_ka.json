@@ -22,8 +22,6 @@
   "attachment",
   "next_visit_section",
   "next_reminding_date",
-  "column_break_gzvf",
-  "next_maintenance_date",
   "section_break_ypjy",
   "checked_at",
   "submitted_at"
@@ -115,15 +113,6 @@
    "label": "Next Reminding Date"
   },
   {
-   "fieldname": "column_break_gzvf",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "next_maintenance_date",
-   "fieldtype": "Date",
-   "label": "Next Maintenance Date"
-  },
-  {
    "fieldname": "section_break_hsas",
    "fieldtype": "Section Break",
    "hidden": 1
@@ -154,7 +143,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-07 12:02:12.272469",
+ "modified": "2024-08-07 16:47:37.301273",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Maintenance Visit KA",
