@@ -69,9 +69,11 @@ frappe.ui.form.on("Maintenance Visit KA", {
                         if (!frm.doc.submitted_at)
                             frm.doc.submitted_at = frm.doc.modified;
                         // save the doc
-                        frm.save_or_update();
+                        // frm.save_or_update();
+                        frm.save("Submit");
                     },
-                    __("Next Reminding Date")
+                    __("Next Reminding Date"),
+                    __("Create")
                 );
                 break;
 
