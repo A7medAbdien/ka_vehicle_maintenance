@@ -99,6 +99,8 @@ def update_vehicle(doc):
             "last_visit_date",
             latest_serviced_visit.maintenance_date,
         )
+    else:
+        frappe.db.set_value("Vehicle KA", vehicle.name, "current_km", 0)
 
 
 def get_latest_visit(vehicle):
