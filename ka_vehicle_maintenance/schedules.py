@@ -1,10 +1,15 @@
 import frappe
-from frappe.utils import nowdate, add_days
+from frappe.utils import nowdate, getdate
 from frappe.query_builder import DocType
 
 
 def update_state_and_send_notifications():
     today = nowdate()
+    current_day = getdate(today).weekday()  # 0 is Monday, 6 is Sunday
+
+    # Check if today is Sunday (6), Monday (0), Tuesday (1), Wednesday (2), or Thursday (3)
+    if current_day not in {6, 0, 1, 2, 3}:
+        return
 
     # Define your DocType for Query Builder
     MaintenanceVisitKA = DocType("Maintenance Visit KA")
@@ -22,6 +27,9 @@ def update_state_and_send_notifications():
 
     # Update the state of each document and send notification
     docs_len = len(docs)
+    if docs_len == 0:
+        return
+
     for index, doc in enumerate(docs, start=1):
         # Update the state
         frappe.db.set_value("Maintenance Visit KA", doc.name, "state", "Unchecked")
