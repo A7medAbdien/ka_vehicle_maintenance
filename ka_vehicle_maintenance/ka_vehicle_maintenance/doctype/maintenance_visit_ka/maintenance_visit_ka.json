@@ -57,9 +57,11 @@
    "reqd": 1
   },
   {
+   "fetch_from": "vehicle.year",
    "fieldname": "vehicle_year",
    "fieldtype": "Int",
-   "label": "Vehicle Year"
+   "label": "Vehicle Year",
+   "read_only": 1
   },
   {
    "fieldname": "last_km",
@@ -152,7 +154,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-07 11:47:39.495127",
+ "modified": "2024-08-07 12:02:12.272469",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Maintenance Visit KA",

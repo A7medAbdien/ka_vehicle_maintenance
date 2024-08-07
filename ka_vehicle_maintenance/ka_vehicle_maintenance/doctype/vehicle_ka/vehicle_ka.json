@@ -58,8 +58,7 @@
    "fieldtype": "Int",
    "in_list_view": 1,
    "label": "Current KM",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "last_visit_date",
@@ -101,7 +100,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-06 15:11:08.549748",
+ "modified": "2024-08-07 12:00:24.782317",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Vehicle KA",
