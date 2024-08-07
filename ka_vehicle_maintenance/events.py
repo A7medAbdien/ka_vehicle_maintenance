@@ -47,14 +47,18 @@ vehicle_owner
 """
 
 
-# Vehicle Visit Events
-def on_visit_update(doc, event):
-    print("\n\n\n on_visit_update")
-    # update visits table in vehicle
-    # update_vehicle(doc)
+# Maintenance Visit Events
+def on_maintenance_delete(doc, event):
+    doc.visits = []
+    vv_list = frappe.get_all(
+        "Vehicle Visit KA",
+        filters={"maintenance_visit": doc.name},
+        fields=["name", "parenttype"],
+    )
+    for vv in vv_list:
+        frappe.delete_doc("Vehicle Visit KA", vv.name)
 
 
-# Maintenace Visit Events
 def on_maintenance_update(doc, event):
     # update/create viehicle visit
     vv_from_maintenance = update_vehicle_visit_for_maintenance(doc)
@@ -163,12 +167,6 @@ def get_latest_serviced_visit(vehicle):
     return None
 
 
-# def on_maintenance_delete(doc, event):
-#     # delete vehicle visit
-#     if frappe.db.exists("Vehicle Visit KA", doc.name):
-#         frappe.delete_doc("Vehicle Visit KA", doc.name)
-
-
 def update_vehicle_visit_for_maintenance(doc):
     # Check if the document exists
     vv_list = frappe.get_all(
@@ -203,24 +201,7 @@ def update_vehicle_visit_for_maintenance(doc):
     return vv
 
 
-def on_state_filed_change(doc):
-
-    print("\n\n\n")
-    print(doc)
-
-    """
-    Pending Approval
-    Unchecked
-    Upcoming
-    
-    Serviced
-    Overdue
-    
-    Notified
-    Early Notified
-    """
-
-
+# State Change Events
 @frappe.whitelist()
 def create_new_maintenance_visit(doc, reminding_date=None):
     if isinstance(doc, str):
