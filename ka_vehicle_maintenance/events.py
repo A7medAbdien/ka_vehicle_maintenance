@@ -101,6 +101,32 @@ def update_vehicle(doc):
         )
 
 
+def get_latest_visit(vehicle):
+    latest_visit = frappe.get_all(
+        "Vehicle Visit KA",
+        filters={"vehicle": vehicle},
+        order_by="maintenance_date desc",
+        fields=["state"],
+        limit=1,
+    )
+    if len(latest_visit) > 0:
+        return latest_visit[0]
+    return None
+
+
+def get_latest_serviced_visit(vehicle):
+    latest_serviced_visit = frappe.get_all(
+        "Vehicle Visit KA",
+        filters={"vehicle": vehicle, "state": "Serviced"},
+        order_by="maintenance_date desc",
+        fields=["new_km", "maintenance_date"],
+        limit=1,
+    )
+    if len(latest_serviced_visit) > 0:
+        return latest_serviced_visit[0]
+    return None
+
+
 def update_vehicle_visit_for_vehicle(doc):
     vv_list = frappe.get_all(
         "Vehicle Visit KA",
@@ -138,33 +164,8 @@ def update_vehicle_visit_for_vehicle(doc):
     vv.next_maintenance_date = doc.next_maintenance_date
     vv.checked_at = doc.checked_at
     vv.submitted_at = doc.submitted_at
+    vv.document_status = doc.docstatus
     vv.save()
-
-
-def get_latest_visit(vehicle):
-    latest_visit = frappe.get_all(
-        "Vehicle Visit KA",
-        filters={"vehicle": vehicle},
-        order_by="maintenance_date desc",
-        fields=["state"],
-        limit=1,
-    )
-    if len(latest_visit) > 0:
-        return latest_visit[0]
-    return None
-
-
-def get_latest_serviced_visit(vehicle):
-    latest_serviced_visit = frappe.get_all(
-        "Vehicle Visit KA",
-        filters={"vehicle": vehicle, "state": "Serviced"},
-        order_by="maintenance_date desc",
-        fields=["new_km", "maintenance_date"],
-        limit=1,
-    )
-    if len(latest_serviced_visit) > 0:
-        return latest_serviced_visit[0]
-    return None
 
 
 def update_vehicle_visit_for_maintenance(doc):
@@ -198,6 +199,7 @@ def update_vehicle_visit_for_maintenance(doc):
     vv.next_maintenance_date = doc.next_maintenance_date
     vv.checked_at = doc.checked_at
     vv.submitted_at = doc.submitted_at
+    vv.document_status = doc.docstatus
     return vv
 
 

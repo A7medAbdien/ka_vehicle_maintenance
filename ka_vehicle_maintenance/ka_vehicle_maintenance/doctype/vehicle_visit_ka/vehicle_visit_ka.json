@@ -22,7 +22,9 @@
   "next_maintenance_date",
   "section_break_pdms",
   "checked_at",
-  "submitted_at"
+  "submitted_at",
+  "column_break_wadk",
+  "document_status"
  ],
  "fields": [
   {
@@ -127,12 +129,21 @@
    "fieldname": "submitted_at",
    "fieldtype": "Datetime",
    "label": "Submitted At"
+  },
+  {
+   "fieldname": "column_break_wadk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "document_status",
+   "fieldtype": "Int",
+   "label": "Document Status"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-08-07 11:05:55.327904",
+ "modified": "2024-08-07 11:17:06.421908",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Vehicle Visit KA",
