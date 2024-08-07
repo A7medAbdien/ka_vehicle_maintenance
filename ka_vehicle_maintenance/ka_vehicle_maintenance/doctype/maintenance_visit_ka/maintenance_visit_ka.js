@@ -3,16 +3,14 @@
 
 frappe.ui.form.on("Maintenance Visit KA", {
     before_save(frm) {
-        if (!frm.doc.maintenance_date && frm.doc.reminding_date)
-            frm.doc.maintenance_date = frappe.datetime.add_days(
-                frm.doc.reminding_date,
-                3
-            );
-        if (!frm.doc.reminding_date && frm.doc.maintenance_date)
-            frm.doc.reminding_date = frappe.datetime.add_days(
-                frm.doc.maintenance_date,
-                -3
-            );
+        // if (!frm.doc.maintenance_date && frm.doc.reminding_date) {
+        //     var date = frappe.datetime.add_days(frm.doc.reminding_date, 3);
+        //     frm.set_value("maintenance_date", date);
+        // }
+        if (!frm.doc.reminding_date && frm.doc.maintenance_date) {
+            var date = frappe.datetime.add_days(frm.doc.maintenance_date, -3);
+            frm.set_value("reminding_date", date);
+        }
     },
     after_save(frm) {
         if (frm.doc.docstatus == 0 && !frm.doc.checked_at) {
