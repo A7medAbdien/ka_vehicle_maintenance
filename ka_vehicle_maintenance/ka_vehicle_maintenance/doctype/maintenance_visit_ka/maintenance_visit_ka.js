@@ -39,7 +39,7 @@ frappe.ui.form.on("Maintenance Visit KA", {
 
             case "Serviced":
             case "Overdue":
-                if (!frm.doc.attachments) {
+                if (!frm.doc.attachment) {
                     // Prevent the default submit action
                     frappe.validated = false;
                     frappe.throw({
