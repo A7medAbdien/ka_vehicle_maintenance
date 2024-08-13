@@ -4,10 +4,10 @@
 frappe.ui.form.on("Vehicle KA", {
     refresh(frm) {
         // Custom buttons in groups
-        frm.add_custom_button("Test", () => {
-            console.log("HI");
-            someFuntion();
-        });
+        // frm.add_custom_button("Test", () => {
+        //     console.log("HI");
+        //     someFuntion();
+        // });
         reorderChildTable(frm);
     },
 });
