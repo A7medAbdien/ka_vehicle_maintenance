@@ -17,9 +17,9 @@ const reorderChildTable = (frm) => {
     // Get the child table data
     let child_table_data = frm.doc.visits;
 
-    // Example: Sort the items alphabetically by a field called 'item_name'
+    // Example: Sort the items by maintenance date
     child_table_data.sort((a, b) =>
-        a.maintenance_date.localeCompare(b.item_name)
+        b.maintenance_date.localeCompare(a.maintenance_date)
     );
 
     // Update the idx values
