@@ -47,3 +47,6 @@ def update_state_and_send_notifications():
 
 def update_state():
     update_state_and_send_notifications()
+
+
+#  bench execute ka_vehicle_maintenance.schedules.update_state
