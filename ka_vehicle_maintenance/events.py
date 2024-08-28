@@ -3,7 +3,7 @@ from frappe.utils import add_to_date
 from ka_vehicle_maintenance.utils.AttrDict import AttrDict
 import json
 from frappe.model.docstatus import DocStatus
-
+from ka_vehicle_maintenance.enums import VehicleStatus
 
 """Maintenance Visit
 Vehicle
@@ -138,7 +138,7 @@ def get_latest_visit(vehicle):
 def get_latest_serviced_visit(vehicle):
     latest_serviced_visit = frappe.get_all(
         "Vehicle Visit KA",
-        filters={"vehicle": vehicle, "state": "Serviced"},
+        filters={"vehicle": vehicle, "state": VehicleStatus.SERVICED},
         order_by="maintenance_date desc",
         fields=["new_km", "maintenance_date"],
         limit=1,
@@ -233,7 +233,7 @@ def create_new_maintenance_visit(doc, reminding_date=None):
     mv = frappe.new_doc("Maintenance Visit KA")
     mv.vehicle = doc.vehicle
     mv.vehicle_year = doc.vehicle_year
-    mv.state = "Upcoming"
+    mv.state = VehicleStatus.UPCOMING
     mv.last_km = doc.new_km
     mv.reminding_date = reminding_date
     mv.maintenance_date = add_to_date(reminding_date, days=3)

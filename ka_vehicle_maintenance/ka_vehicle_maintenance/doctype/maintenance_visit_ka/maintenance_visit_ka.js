@@ -1,5 +1,6 @@
 // Copyright (c) 2024, ahmed.g.abdin and contributors
 // For license information, please see license.txt
+import { VehicleStatus } from "../../../enums";
 
 frappe.ui.form.on("Maintenance Visit KA", {
     before_save(frm) {
@@ -15,10 +16,10 @@ frappe.ui.form.on("Maintenance Visit KA", {
     after_save(frm) {
         if (frm.doc.docstatus == 0 && !frm.doc.checked_at) {
             switch (frm.doc.state) {
-                case "Serviced":
-                case "Overdue":
-                case "Notified":
-                case "Early Notified":
+                case VehicleStatus.SERVICED:
+                case VehicleStatus.OVERDUE:
+                case VehicleStatus.NOTIFIED:
+                case VehicleStatus.EARLY_NOTIFIED:
                     frm.doc.checked_at = frm.doc.modified;
                     break;
             }
@@ -26,9 +27,9 @@ frappe.ui.form.on("Maintenance Visit KA", {
     },
     before_submit(frm) {
         switch (frm.doc.state) {
-            case "Pending Approval":
-            case "Unchecked":
-            case "Upcoming":
+            case VehicleStatus.PENDING_APPROVAL:
+            case VehicleStatus.UNCHECKED:
+            case VehicleStatus.UPCOMING:
                 // Prevent the default submit action
                 frappe.validated = false;
                 frappe.throw({
@@ -37,8 +38,8 @@ frappe.ui.form.on("Maintenance Visit KA", {
                 });
                 break;
 
-            case "Serviced":
-            case "Overdue":
+            case VehicleStatus.SERVICED:
+            case VehicleStatus.OVERDUE:
                 if (!frm.doc.attachment) {
                     // Prevent the default submit action
                     frappe.validated = false;
@@ -55,8 +56,8 @@ frappe.ui.form.on("Maintenance Visit KA", {
 
                 break;
 
-            case "Notified":
-            case "Early Notified":
+            case VehicleStatus.NOTIFIED:
+            case VehicleStatus.EARLY_NOTIFIED:
                 // Prevent the default submit action
                 frappe.validated = false;
                 frappe.prompt(

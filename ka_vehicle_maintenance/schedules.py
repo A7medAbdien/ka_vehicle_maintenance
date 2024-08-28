@@ -1,6 +1,7 @@
 import frappe
 from frappe.utils import nowdate, getdate
 from frappe.query_builder import DocType
+from ka_vehicle_maintenance.enums import VehicleStatus
 
 
 def update_state_and_send_notifications():
@@ -20,7 +21,7 @@ def update_state_and_send_notifications():
         .select(MaintenanceVisitKA.name)
         .where(
             (MaintenanceVisitKA.docstatus == 0)
-            & (MaintenanceVisitKA.state == "Upcoming")
+            & (MaintenanceVisitKA.state == VehicleStatus.UPCOMING)
             & (MaintenanceVisitKA.reminding_date <= today)
         )
     ).run(as_dict=True)
@@ -32,7 +33,9 @@ def update_state_and_send_notifications():
 
     for index, doc in enumerate(docs, start=1):
         # Update the state
-        frappe.db.set_value("Maintenance Visit KA", doc.name, "state", "Unchecked")
+        frappe.db.set_value(
+            "Maintenance Visit KA", doc.name, "state", VehicleStatus.UNCHECKED
+        )
 
         # Create a new notification log
         n = frappe.new_doc("Notification Log")
