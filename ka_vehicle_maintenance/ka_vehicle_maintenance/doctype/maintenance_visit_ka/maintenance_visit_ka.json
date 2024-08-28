@@ -15,7 +15,7 @@
   "vehicle_year",
   "last_km",
   "new_km",
-  "traveled_distance",
+  "distance",
   "column_break_rcbc",
   "maintenance_date",
   "attachment",
@@ -75,7 +75,7 @@
   {
    "fieldname": "new_km",
    "fieldtype": "Int",
-   "label": "New KM"
+   "label": "Current KM"
   },
   {
    "fieldname": "column_break_rcbc",
@@ -179,16 +179,16 @@
    "options": "No\nYes"
   },
   {
-   "fieldname": "traveled_distance",
+   "fieldname": "distance",
    "fieldtype": "Int",
-   "label": "Traveled Distance",
+   "label": "Distance Traveled",
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-28 14:27:12.118353",
+ "modified": "2024-08-28 15:54:55.742116",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Maintenance Visit KA",

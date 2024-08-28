@@ -14,6 +14,28 @@ const VehicleStatus = {
 };
 
 frappe.ui.form.on("Maintenance Visit KA", {
+    state(frm) {
+        translateState(frm);
+    },
+    called(frm) {
+        determineState(frm);
+    },
+    visited(frm) {
+        determineState(frm);
+    },
+    visit_late(frm) {
+        determineState(frm);
+    },
+    need_visit(frm) {
+        determineState(frm);
+    },
+    new_km(frm) {
+        updateDistance(frm);
+    },
+    onload(frm) {
+        translateState(frm);
+        updateDistance(frm);
+    },
     before_save(frm) {
         // if (!frm.doc.maintenance_date && frm.doc.reminding_date) {
         //     var date = frappe.datetime.add_days(frm.doc.reminding_date, 3);
@@ -116,4 +138,113 @@ const createNewMV = (frm, reminding_date) => {
         //     console.log(message);
         // },
     });
+};
+
+/**
+ * called
+ * need_visit
+ * visited
+ * visit_late
+ */
+const translateState = (frm) => {
+    const state = frm.doc.state;
+    switch (state) {
+        case VehicleStatus.SERVICED:
+            frm.set_value("called", "Yes");
+            frm.set_value("need_visit", "Yes");
+            frm.set_value("visited", "Yes");
+            frm.set_value("visit_late", "No");
+            break;
+        case VehicleStatus.OVERDUE:
+            frm.set_value("called", "Yes");
+            frm.set_value("need_visit", "Yes");
+            frm.set_value("visited", "Yes");
+            frm.set_value("visit_late", "Yes");
+            break;
+        case VehicleStatus.NOTIFIED:
+            frm.set_value("called", "Yes");
+            frm.set_value("need_visit", "Yes");
+            frm.set_value("visited", "No");
+            frm.set_value("visit_late", "No");
+            break;
+        case VehicleStatus.EARLY_NOTIFIED:
+            frm.set_value("called", "Yes");
+            frm.set_value("need_visit", "No");
+            frm.set_value("visited", "No");
+            frm.set_value("visit_late", "No");
+            break;
+        case VehicleStatus.PENDING_APPROVAL:
+            frm.set_value("called", "Yes");
+            frm.set_value("need_visit", "Yes");
+            frm.set_value("visited", "Yes");
+            frm.set_value("visit_late", "No");
+            break;
+        case VehicleStatus.UNCHECKED:
+        case VehicleStatus.UPCOMING:
+            frm.set_value("called", "No");
+            frm.set_value("need_visit", "No");
+            frm.set_value("visited", "No");
+            frm.set_value("visit_late", "No");
+            break;
+    }
+};
+
+const determineState = (frm) => {
+    const called = frm.doc.called;
+    const need_visit = frm.doc.need_visit;
+    const visited = frm.doc.visited;
+    const visit_late = frm.doc.visit_late;
+
+    if (
+        called === "Yes" &&
+        need_visit === "Yes" &&
+        visited === "Yes" &&
+        visit_late === "No"
+    ) {
+        frm.set_value("state", VehicleStatus.SERVICED);
+    } else if (
+        called === "Yes" &&
+        need_visit === "Yes" &&
+        visited === "Yes" &&
+        visit_late === "Yes"
+    ) {
+        frm.set_value("state", VehicleStatus.OVERDUE);
+    } else if (
+        called === "Yes" &&
+        need_visit === "Yes" &&
+        visited === "No" &&
+        visit_late === "No"
+    ) {
+        frm.set_value("state", VehicleStatus.NOTIFIED);
+    } else if (
+        called === "Yes" &&
+        need_visit === "No" &&
+        visited === "No" &&
+        visit_late === "No"
+    ) {
+        frm.set_value("state", VehicleStatus.EARLY_NOTIFIED);
+    } else if (
+        called === "Yes" &&
+        need_visit === "Yes" &&
+        visited === "Yes" &&
+        visit_late === "No"
+    ) {
+        frm.set_value("state", VehicleStatus.PENDING_APPROVAL);
+    } else if (
+        called === "No" &&
+        need_visit === "No" &&
+        visited === "No" &&
+        visit_late === "No"
+    ) {
+        frm.set_value("state", VehicleStatus.UPCOMING); // Or UNCHECKED, depending on the logic
+    }
+};
+
+const updateDistance = (frm) => {
+    const last_km = frm.doc.last_km;
+    const new_km = frm.doc.new_km;
+    if (last_km && new_km) {
+        const distance = frm.doc.new_km - frm.doc.last_km;
+        frm.set_value("distance", distance);
+    }
 };
