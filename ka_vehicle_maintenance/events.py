@@ -233,7 +233,7 @@ def create_new_maintenance_visit(doc, reminding_date=None):
     mv = frappe.new_doc("Maintenance Visit KA")
     mv.vehicle = doc.vehicle
     mv.vehicle_year = doc.vehicle_year
-    mv.state = VehicleStatus.UPCOMING
+    mv.state = "Upcoming"
     mv.last_km = doc.new_km
     mv.reminding_date = reminding_date
     mv.maintenance_date = add_to_date(reminding_date, days=3)
