@@ -3,7 +3,10 @@
 
 # import frappe
 from frappe.model.document import Document
+from frappe.utils import add_days
 
 
 class MaintenanceVisitKA(Document):
-	pass
+    def validate(doc, method):
+        if not doc.reminding_date and doc.maintenance_date:
+            doc.reminding_date = add_days(doc.maintenance_date, -3)
