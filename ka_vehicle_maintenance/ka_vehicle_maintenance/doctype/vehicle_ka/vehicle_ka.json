@@ -25,6 +25,7 @@
    "fieldname": "license_plate",
    "fieldtype": "Int",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "License Plate",
    "reqd": 1
   },
@@ -32,6 +33,7 @@
    "fieldname": "model",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Model",
    "reqd": 1
   },
@@ -39,6 +41,7 @@
    "fieldname": "year",
    "fieldtype": "Int",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Year",
    "reqd": 1
   },
@@ -49,9 +52,10 @@
   {
    "fieldname": "state",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "State",
-   "options": "\nUpcoming\nServiced\nPending Approval\nNotified\nOverdue\nUnchecked\nEarly Notified",
-   "read_only": 1
+   "options": "\nUpcoming\nServiced\nPending Approval\nNotified\nOverdue\nUnchecked\nEarly Notified"
   },
   {
    "fieldname": "current_km",
@@ -63,6 +67,7 @@
   {
    "fieldname": "last_visit_date",
    "fieldtype": "Date",
+   "in_standard_filter": 1,
    "label": "Last Visit Date",
    "read_only": 1
   },
@@ -100,7 +105,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-07 12:00:24.782317",
+ "modified": "2024-08-28 12:27:05.691930",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Vehicle KA",
