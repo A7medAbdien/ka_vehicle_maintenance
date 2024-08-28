@@ -15,13 +15,16 @@
   "vehicle_year",
   "last_km",
   "new_km",
+  "traveled_distance",
   "column_break_rcbc",
-  "reminding_date",
   "maintenance_date",
   "attachment",
+  "reminding_date",
   "status_details_section",
   "called",
+  "need_visit",
   "visited",
+  "visit_late",
   "state",
   "next_visit_section",
   "next_reminding_date",
@@ -148,22 +151,44 @@
    "label": "Status Details"
   },
   {
-   "default": "0",
+   "default": "No",
    "fieldname": "called",
-   "fieldtype": "Check",
-   "label": "Did You Call the Rider?"
+   "fieldtype": "Select",
+   "label": "Did You Call the Rider?",
+   "options": "No\nYes"
   },
   {
-   "default": "0",
+   "default": "No",
    "fieldname": "visited",
-   "fieldtype": "Check",
-   "label": "Did the Rider Visit the Garage?"
+   "fieldtype": "Select",
+   "label": "Did the Rider Visit the Garage?",
+   "options": "No\nYes"
+  },
+  {
+   "default": "No",
+   "fieldname": "need_visit",
+   "fieldtype": "Select",
+   "label": "Does the Vehicle Needed Maintenance?",
+   "options": "No\nYes"
+  },
+  {
+   "default": "No",
+   "fieldname": "visit_late",
+   "fieldtype": "Select",
+   "label": "Did the Rider Visit the Garage Late?",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "traveled_distance",
+   "fieldtype": "Int",
+   "label": "Traveled Distance",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-28 13:12:18.262510",
+ "modified": "2024-08-28 14:27:12.118353",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Maintenance Visit KA",

@@ -14,7 +14,9 @@
   "last_visit_date",
   "status_details_section",
   "called",
+  "need_visit",
   "visited",
+  "late_visit",
   "state",
   "section_break_ubes",
   "visits",
@@ -111,21 +113,41 @@
    "label": "Status Details"
   },
   {
-   "default": "0",
+   "default": "No",
    "fieldname": "called",
-   "fieldtype": "Check",
-   "label": "Did You Call the Rider?"
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Did You Call the Rider?",
+   "options": "No\nYes"
   },
   {
-   "default": "0",
+   "default": "No",
    "fieldname": "visited",
-   "fieldtype": "Check",
-   "label": "Did the Rider Visit the Garage?"
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Did the Rider Visit the Garage?",
+   "options": "No\nYes"
+  },
+  {
+   "default": "No",
+   "fieldname": "need_visit",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Does the Vehicle Needed Maintenance?",
+   "options": "No\nYes"
+  },
+  {
+   "default": "No",
+   "fieldname": "late_visit",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Did the Rider Visit the Garage Late?",
+   "options": "No\nYes"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-28 13:01:48.950852",
+ "modified": "2024-08-28 14:24:44.540621",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Vehicle KA",
