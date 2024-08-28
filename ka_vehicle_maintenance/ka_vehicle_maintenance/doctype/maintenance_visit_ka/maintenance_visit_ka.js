@@ -1,6 +1,17 @@
 // Copyright (c) 2024, ahmed.g.abdin and contributors
 // For license information, please see license.txt
-import { VehicleStatus } from "../../../enums";
+const VehicleStatus = {
+    SERVICED: "Serviced",
+    OVERDUE: "Overdue",
+
+    NOTIFIED: "Notified",
+    EARLY_NOTIFIED: "Early Notified",
+
+    PENDING_APPROVAL: "Pending Approval",
+
+    UPCOMING: "Upcoming",
+    UNCHECKED: "Unchecked",
+};
 
 frappe.ui.form.on("Maintenance Visit KA", {
     before_save(frm) {
