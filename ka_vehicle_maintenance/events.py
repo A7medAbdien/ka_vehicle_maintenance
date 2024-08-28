@@ -2,6 +2,7 @@ import frappe
 from frappe.utils import add_to_date
 from ka_vehicle_maintenance.utils.AttrDict import AttrDict
 import json
+from frappe.model.docstatus import DocStatus
 
 
 """Maintenance Visit
@@ -96,7 +97,7 @@ def update_vehicle(doc):
     # 1. update/create vehicle visit for vehicle
     update_vehicle_visit_for_vehicle(doc)
 
-    # 2. get latest vehicle visit state and update vehicle field (state)
+    # 2. get latest submited vehicle visit state and update vehicle field (state)
     latest_visit = get_latest_visit(vehicle.name)
     if latest_visit:
         frappe.db.set_value("Vehicle KA", vehicle.name, "state", latest_visit.state)
@@ -124,7 +125,7 @@ def update_vehicle(doc):
 def get_latest_visit(vehicle):
     latest_visit = frappe.get_all(
         "Vehicle Visit KA",
-        filters={"vehicle": vehicle},
+        filters={"vehicle": vehicle, "docstatus": DocStatus.submitted()},
         order_by="maintenance_date desc",
         fields=["state"],
         limit=1,
