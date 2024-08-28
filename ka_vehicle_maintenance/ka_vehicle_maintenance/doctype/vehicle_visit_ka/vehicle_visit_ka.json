@@ -12,10 +12,13 @@
   "last_km",
   "new_km",
   "column_break_rcbc",
+  "attachment",
   "reminding_date",
   "maintenance_date",
+  "status_details_section",
+  "called",
+  "visited",
   "state",
-  "attachment",
   "next_visit_section",
   "next_reminding_date",
   "column_break_gzvf",
@@ -138,12 +141,29 @@
    "fieldname": "document_status",
    "fieldtype": "Int",
    "label": "Document Status"
+  },
+  {
+   "fieldname": "status_details_section",
+   "fieldtype": "Section Break",
+   "label": "Status Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "called",
+   "fieldtype": "Check",
+   "label": "Did You Call the Rider?"
+  },
+  {
+   "default": "0",
+   "fieldname": "visited",
+   "fieldtype": "Check",
+   "label": "Did the Rider Visit the Garage?"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-08-07 11:17:06.421908",
+ "modified": "2024-08-28 13:13:21.508882",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Vehicle Visit KA",

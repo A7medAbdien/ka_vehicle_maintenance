@@ -10,9 +10,12 @@
   "model",
   "year",
   "column_break_xtky",
-  "state",
   "current_km",
   "last_visit_date",
+  "status_details_section",
+  "called",
+  "visited",
+  "state",
   "section_break_ubes",
   "visits",
   "insurance_section",
@@ -101,11 +104,28 @@
   {
    "fieldname": "section_break_ubes",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "status_details_section",
+   "fieldtype": "Section Break",
+   "label": "Status Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "called",
+   "fieldtype": "Check",
+   "label": "Did You Call the Rider?"
+  },
+  {
+   "default": "0",
+   "fieldname": "visited",
+   "fieldtype": "Check",
+   "label": "Did the Rider Visit the Garage?"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-28 12:27:05.691930",
+ "modified": "2024-08-28 13:01:48.950852",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Vehicle KA",

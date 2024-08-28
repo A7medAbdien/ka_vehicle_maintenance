@@ -18,8 +18,11 @@
   "column_break_rcbc",
   "reminding_date",
   "maintenance_date",
-  "state",
   "attachment",
+  "status_details_section",
+  "called",
+  "visited",
+  "state",
   "next_visit_section",
   "next_reminding_date",
   "section_break_ypjy",
@@ -138,12 +141,29 @@
    "fieldname": "submitted_at",
    "fieldtype": "Datetime",
    "label": "Submitted At"
+  },
+  {
+   "fieldname": "status_details_section",
+   "fieldtype": "Section Break",
+   "label": "Status Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "called",
+   "fieldtype": "Check",
+   "label": "Did You Call the Rider?"
+  },
+  {
+   "default": "0",
+   "fieldname": "visited",
+   "fieldtype": "Check",
+   "label": "Did the Rider Visit the Garage?"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-07 16:47:37.301273",
+ "modified": "2024-08-28 13:12:18.262510",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Maintenance Visit KA",
