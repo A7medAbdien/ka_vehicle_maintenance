@@ -2,6 +2,8 @@ from enum import Enum
 
 
 class VehicleStatus(Enum):
+    UNUSED = "Unused"  # defult
+
     SERVICED = "Serviced"
     OVERDUE = "Overdue"
 

@@ -1,6 +1,7 @@
 // Copyright (c) 2024, ahmed.g.abdin and contributors
 // For license information, please see license.txt
 const VehicleStatus = {
+    UNUSED: "Unused",
     SERVICED: "Serviced",
     OVERDUE: "Overdue",
 
@@ -63,6 +64,7 @@ frappe.ui.form.on("Maintenance Visit KA", {
             case VehicleStatus.PENDING_APPROVAL:
             case VehicleStatus.UNCHECKED:
             case VehicleStatus.UPCOMING:
+            case VehicleStatus.UNUSED:
                 // Prevent the default submit action
                 frappe.validated = false;
                 frappe.throw({
@@ -181,6 +183,7 @@ const translateState = (frm) => {
             break;
         case VehicleStatus.UNCHECKED:
         case VehicleStatus.UPCOMING:
+        case VehicleStatus.UNUSED:
             frm.set_value("called", "No");
             frm.set_value("need_visit", "No");
             frm.set_value("visited", "No");
@@ -236,7 +239,7 @@ const determineState = (frm) => {
         visited === "No" &&
         visit_late === "No"
     ) {
-        frm.set_value("state", VehicleStatus.UPCOMING); // Or UNCHECKED, depending on the logic
+        frm.set_value("state", VehicleStatus.UNCHECKED); // Or UNCHECKED, depending on the logic
     }
 };
 
