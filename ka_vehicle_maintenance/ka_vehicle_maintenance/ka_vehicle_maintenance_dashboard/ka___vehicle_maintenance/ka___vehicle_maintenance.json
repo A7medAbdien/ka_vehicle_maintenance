@@ -1,0 +1,45 @@
+{
+ "cards": [
+  {
+   "card": "Number of Vehicle"
+  },
+  {
+   "card": "Maintained Vehicle"
+  },
+  {
+   "card": "Unchecked Visits"
+  },
+  {
+   "card": "Pending Approval Visits"
+  },
+  {
+   "card": "Upcoming Visits"
+  },
+  {
+   "card": "Total Active Visits"
+  },
+  {
+   "card": "Unused Vehicle"
+  },
+  {
+   "card": "Unmaintained Vehicle"
+  }
+ ],
+ "charts": [
+  {
+   "width": "Half"
+  }
+ ],
+ "creation": "2024-08-29 12:06:12.981639",
+ "dashboard_name": "KA - Vehicle Maintenance",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2024-08-29 12:13:48.017468",
+ "modified_by": "Administrator",
+ "module": "KA Vehicle Maintenance",
+ "name": "KA - Vehicle Maintenance",
+ "owner": "Administrator"
+}

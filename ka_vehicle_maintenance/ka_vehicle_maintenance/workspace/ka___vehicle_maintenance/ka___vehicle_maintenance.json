@@ -1,0 +1,118 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"zW9SkRa8aF\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Number of Vehicle\",\"col\":3}},{\"id\":\"-mPTOGHhI_\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Maintained Vehicle\",\"col\":3}},{\"id\":\"6_hukVeBdX\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Unmaintained Vehicle\",\"col\":3}},{\"id\":\"YAlQ595jHo\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Unused Vehicle\",\"col\":3}},{\"id\":\"LkqrpJHM9X\",\"type\":\"header\",\"data\":{\"text\":\"<span style=\\\"font-size: 18px; letter-spacing: 0.18px;\\\"><b>Maintenance Visits</b></span>\",\"col\":12}},{\"id\":\"dGzaoqv1dA\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Active Visits\",\"col\":3}},{\"id\":\"OY9KBVMONf\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Upcoming Visits\",\"col\":3}},{\"id\":\"ATjsMmFU6K\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Unchecked Visits\",\"col\":3}},{\"id\":\"V7eyA0wkKK\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Pending Approval Visits\",\"col\":3}}]",
+ "creation": "2024-08-28 12:06:48.145530",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "color-energy-points",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "KA - Vehicle Maintenance",
+ "links": [
+  {
+   "dependencies": "Item",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stock Projected Qty",
+   "link_count": 0,
+   "link_to": "Stock Projected Qty",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "Item",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Stock Summary",
+   "link_count": 0,
+   "link_to": "stock-balance",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "Item",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stock Ageing",
+   "link_count": 0,
+   "link_to": "Stock Ageing",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "Item",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Item Price Stock",
+   "link_count": 0,
+   "link_to": "Item Price Stock",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Warehouse Wise Stock Balance",
+   "link_count": 0,
+   "link_to": "Warehouse Wise Stock Balance",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-08-29 12:30:04.158151",
+ "modified_by": "Administrator",
+ "module": "KA Vehicle Maintenance",
+ "name": "KA - Vehicle Maintenance",
+ "number_cards": [
+  {
+   "label": "Number of Vehicle",
+   "number_card_name": "Number of Vehicle"
+  },
+  {
+   "label": "Total Active Visits",
+   "number_card_name": "Total Active Visits"
+  },
+  {
+   "label": "Maintained Vehicle",
+   "number_card_name": "Maintained Vehicle"
+  },
+  {
+   "label": "Upcoming Visits",
+   "number_card_name": "Upcoming Visits"
+  },
+  {
+   "label": "Unmaintained Vehicle",
+   "number_card_name": "Unmaintained Vehicle"
+  },
+  {
+   "label": "Unchecked Visits",
+   "number_card_name": "Unchecked Visits"
+  },
+  {
+   "label": "Unused Vehicle",
+   "number_card_name": "Unused Vehicle"
+  },
+  {
+   "label": "Pending Approval Visits",
+   "number_card_name": "Pending Approval Visits"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [],
+ "title": "KA - Vehicle Maintenance"
+}
