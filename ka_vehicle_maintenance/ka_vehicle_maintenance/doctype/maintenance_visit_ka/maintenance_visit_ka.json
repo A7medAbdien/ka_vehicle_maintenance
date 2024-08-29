@@ -14,12 +14,12 @@
   "vehicle",
   "vehicle_year",
   "last_km",
+  "reminding_date",
+  "column_break_rcbc",
+  "attachment",
+  "maintenance_date",
   "new_km",
   "distance",
-  "column_break_rcbc",
-  "maintenance_date",
-  "attachment",
-  "reminding_date",
   "status_details_section",
   "called",
   "need_visit",
@@ -70,12 +70,14 @@
   {
    "fieldname": "last_km",
    "fieldtype": "Int",
-   "label": "Last KM"
+   "label": "Last KM",
+   "read_only": 1
   },
   {
    "fieldname": "new_km",
    "fieldtype": "Int",
-   "label": "Current KM"
+   "label": "Current KM",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_rcbc",
@@ -188,7 +190,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-28 15:54:55.742116",
+ "modified": "2024-08-29 13:39:50.399765",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Maintenance Visit KA",
