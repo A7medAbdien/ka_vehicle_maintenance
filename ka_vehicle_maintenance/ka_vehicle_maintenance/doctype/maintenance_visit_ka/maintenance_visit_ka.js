@@ -249,5 +249,5 @@ const updateDistance = (frm) => {
     if (last_km && new_km) {
         const distance = frm.doc.new_km - frm.doc.last_km;
         frm.set_value("distance", distance);
-    }
+    } else frm.set_value("distance", 0);
 };
