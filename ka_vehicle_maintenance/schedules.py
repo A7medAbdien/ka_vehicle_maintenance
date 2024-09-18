@@ -37,13 +37,13 @@ def update_state_and_send_notifications():
             "Maintenance Visit KA", doc.name, "state", VehicleStatus.UNCHECKED
         )
 
-        # Create a new notification log
-        n = frappe.new_doc("Notification Log")
-        n.subject = f"Reminder {index} of {docs_len} Maintenance Visit Reminder"
-        n.email_content = "This is a reminder for your maintenance visit"
-        n.document_type = "Maintenance Visit KA"
-        n.document_name = doc.name
-        n.insert()
+        # # Create a new notification log
+        # n = frappe.new_doc("Notification Log")
+        # n.subject = f"Reminder {index} of {docs_len} Maintenance Visit Reminder"
+        # n.email_content = "This is a reminder for your maintenance visit"
+        # n.document_type = "Maintenance Visit KA"
+        # n.document_name = doc.name
+        # n.insert()
 
     frappe.db.commit()
 
