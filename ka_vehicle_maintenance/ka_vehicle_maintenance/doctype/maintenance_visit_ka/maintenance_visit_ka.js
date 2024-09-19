@@ -149,6 +149,7 @@ const createNewMV = (frm, reminding_date) => {
  * visit_late
  */
 const translateState = (frm) => {
+    if (frm.doc.docstatus === 1) return;
     const state = frm.doc.state;
     switch (state) {
         case VehicleStatus.SERVICED:
@@ -193,6 +194,7 @@ const translateState = (frm) => {
 };
 
 const determineState = (frm) => {
+    if (frm.doc.docstatus === 1) return;
     const called = frm.doc.called;
     const need_visit = frm.doc.need_visit;
     const visited = frm.doc.visited;
@@ -267,6 +269,7 @@ const determineState = (frm) => {
 };
 
 const updateDistance = (frm) => {
+    if (frm.doc.docstatus === 1) return;
     const last_km = frm.doc.last_km;
     const new_km = frm.doc.new_km;
     if (last_km && new_km) {
