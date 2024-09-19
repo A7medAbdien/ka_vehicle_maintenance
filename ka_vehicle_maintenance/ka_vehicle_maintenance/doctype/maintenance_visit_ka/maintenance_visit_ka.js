@@ -201,27 +201,27 @@ const determineState = (frm) => {
     const visit_late = frm.doc.visit_late;
 
     // allow write only if yes based on order
-    if (called === "No") {
-        frm.set_df_property("need_visit", "read_only", 1);
-        frm.set_df_property("visited", "read_only", 1);
-        frm.set_df_property("visit_late", "read_only", 1);
-    } else {
-        frm.set_df_property("need_visit", "read_only", 0);
-        frm.set_df_property("visited", "read_only", 0);
-        frm.set_df_property("visit_late", "read_only", 0);
-    }
-    if (need_visit === "No") {
-        frm.set_df_property("visited", "read_only", 1);
-        frm.set_df_property("visit_late", "read_only", 1);
-    } else {
-        frm.set_df_property("visited", "read_only", 0);
-        frm.set_df_property("visit_late", "read_only", 0);
-    }
-    if (visited === "No") {
-        frm.set_df_property("visit_late", "read_only", 1);
-    } else {
-        frm.set_df_property("visit_late", "read_only", 0);
-    }
+    // if (called === "No") {
+    //     frm.set_df_property("need_visit", "read_only", 1);
+    //     frm.set_df_property("visited", "read_only", 1);
+    //     frm.set_df_property("visit_late", "read_only", 1);
+    // } else {
+    //     frm.set_df_property("need_visit", "read_only", 0);
+    //     frm.set_df_property("visited", "read_only", 0);
+    //     frm.set_df_property("visit_late", "read_only", 0);
+    // }
+    // if (need_visit === "No") {
+    //     frm.set_df_property("visited", "read_only", 1);
+    //     frm.set_df_property("visit_late", "read_only", 1);
+    // } else {
+    //     frm.set_df_property("visited", "read_only", 0);
+    //     frm.set_df_property("visit_late", "read_only", 0);
+    // }
+    // if (visited === "No") {
+    //     frm.set_df_property("visit_late", "read_only", 1);
+    // } else {
+    //     frm.set_df_property("visit_late", "read_only", 0);
+    // }
 
     if (
         called === "Yes" &&
