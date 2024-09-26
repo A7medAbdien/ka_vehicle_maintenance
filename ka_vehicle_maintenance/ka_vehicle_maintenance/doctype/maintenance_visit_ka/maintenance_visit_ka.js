@@ -27,9 +27,9 @@ frappe.ui.form.on("Maintenance Visit KA", {
     visit_late(frm) {
         determineState(frm);
     },
-    need_visit(frm) {
-        determineState(frm);
-    },
+    // need_visit(frm) {
+    //     determineState(frm);
+    // },
     new_km(frm) {
         updateDistance(frm);
     },
@@ -154,31 +154,31 @@ const translateState = (frm) => {
     switch (state) {
         case VehicleStatus.SERVICED:
             frm.set_value("called", "Yes");
-            frm.set_value("need_visit", "Yes");
+            // frm.set_value("need_visit", "Yes");
             frm.set_value("visited", "Yes");
             frm.set_value("visit_late", "No");
             break;
         case VehicleStatus.OVERDUE:
             frm.set_value("called", "Yes");
-            frm.set_value("need_visit", "Yes");
+            // frm.set_value("need_visit", "Yes");
             frm.set_value("visited", "Yes");
             frm.set_value("visit_late", "Yes");
             break;
         case VehicleStatus.NOTIFIED:
             frm.set_value("called", "Yes");
-            frm.set_value("need_visit", "Yes");
+            // frm.set_value("need_visit", "Yes");
             frm.set_value("visited", "No");
             frm.set_value("visit_late", "No");
             break;
         case VehicleStatus.EARLY_NOTIFIED:
             frm.set_value("called", "Yes");
-            frm.set_value("need_visit", "No");
+            // frm.set_value("need_visit", "No");
             frm.set_value("visited", "No");
             frm.set_value("visit_late", "No");
             break;
         case VehicleStatus.PENDING_APPROVAL:
             frm.set_value("called", "Yes");
-            frm.set_value("need_visit", "Yes");
+            // frm.set_value("need_visit", "Yes");
             frm.set_value("visited", "Yes");
             frm.set_value("visit_late", "No");
             break;
@@ -186,7 +186,7 @@ const translateState = (frm) => {
         case VehicleStatus.UPCOMING:
         case VehicleStatus.UNUSED:
             frm.set_value("called", "No");
-            frm.set_value("need_visit", "No");
+            // frm.set_value("need_visit", "No");
             frm.set_value("visited", "No");
             frm.set_value("visit_late", "No");
             break;
@@ -196,17 +196,17 @@ const translateState = (frm) => {
 const determineState = (frm) => {
     if (frm.doc.docstatus === 1) return;
     const called = frm.doc.called;
-    const need_visit = frm.doc.need_visit;
+    // const need_visit = frm.doc.need_visit;
     const visited = frm.doc.visited;
     const visit_late = frm.doc.visit_late;
 
     // allow write only if yes based on order
     // if (called === "No") {
-    //     frm.set_df_property("need_visit", "read_only", 1);
+    // frm.set_df_property("need_visit", "read_only", 1);
     //     frm.set_df_property("visited", "read_only", 1);
     //     frm.set_df_property("visit_late", "read_only", 1);
     // } else {
-    //     frm.set_df_property("need_visit", "read_only", 0);
+    // frm.set_df_property("need_visit", "read_only", 0);
     //     frm.set_df_property("visited", "read_only", 0);
     //     frm.set_df_property("visit_late", "read_only", 0);
     // }
@@ -225,42 +225,42 @@ const determineState = (frm) => {
 
     if (
         called === "Yes" &&
-        need_visit === "Yes" &&
+        // need_visit === "Yes" &&
         visited === "Yes" &&
         visit_late === "No"
     ) {
         frm.set_value("state", VehicleStatus.SERVICED);
     } else if (
         called === "Yes" &&
-        need_visit === "Yes" &&
+        // need_visit === "Yes" &&
         visited === "Yes" &&
         visit_late === "Yes"
     ) {
         frm.set_value("state", VehicleStatus.OVERDUE);
     } else if (
         called === "Yes" &&
-        need_visit === "Yes" &&
+        // need_visit === "Yes" &&
         visited === "No" &&
         visit_late === "No"
     ) {
         frm.set_value("state", VehicleStatus.NOTIFIED);
     } else if (
         called === "Yes" &&
-        need_visit === "No" &&
+        // need_visit === "No" &&
         visited === "No" &&
         visit_late === "No"
     ) {
         frm.set_value("state", VehicleStatus.EARLY_NOTIFIED);
     } else if (
         called === "Yes" &&
-        need_visit === "Yes" &&
+        // need_visit === "Yes" &&
         visited === "Yes" &&
         visit_late === "No"
     ) {
         frm.set_value("state", VehicleStatus.PENDING_APPROVAL);
     } else if (
         called === "No" &&
-        need_visit === "No" &&
+        // need_visit === "No" &&
         visited === "No" &&
         visit_late === "No"
     ) {

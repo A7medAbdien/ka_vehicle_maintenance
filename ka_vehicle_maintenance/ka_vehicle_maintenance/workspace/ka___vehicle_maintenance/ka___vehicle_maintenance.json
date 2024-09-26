@@ -8,7 +8,7 @@
  "for_user": "",
  "hide_custom": 0,
  "icon": "color-energy-points",
- "idx": 0,
+ "idx": 1,
  "indicator_color": "",
  "is_hidden": 0,
  "label": "KA - Vehicle Maintenance",
@@ -68,7 +68,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-08-29 12:30:04.158151",
+ "modified": "2024-09-23 14:53:07.441532",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "KA - Vehicle Maintenance",

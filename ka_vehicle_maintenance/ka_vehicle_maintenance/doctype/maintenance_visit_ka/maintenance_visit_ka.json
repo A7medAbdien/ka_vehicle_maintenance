@@ -164,13 +164,13 @@
    "fieldname": "visited",
    "fieldtype": "Select",
    "label": "Did the Rider Visit the Garage?",
-   "options": "No\nYes",
-   "read_only": 1
+   "options": "No\nYes"
   },
   {
-   "default": "No",
+   "default": "Yes",
    "fieldname": "need_visit",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Does the Vehicle Needed Maintenance?",
    "options": "No\nYes",
    "read_only": 1
@@ -180,8 +180,7 @@
    "fieldname": "visit_late",
    "fieldtype": "Select",
    "label": "Did the Rider Visit the Garage Late?",
-   "options": "No\nYes",
-   "read_only": 1
+   "options": "No\nYes"
   },
   {
    "fieldname": "distance",
@@ -193,7 +192,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-19 16:58:49.562692",
+ "modified": "2024-09-26 11:05:17.399259",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Maintenance Visit KA",
