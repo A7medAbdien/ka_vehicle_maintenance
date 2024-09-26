@@ -3,7 +3,7 @@ from frappe.utils import add_to_date
 from ka_vehicle_maintenance.utils.AttrDict import AttrDict
 import json
 from frappe.model.docstatus import DocStatus
-from ka_vehicle_maintenance.enums import VehicleStatus
+from ka_vehicle_maintenance.enums import (VehicleStatus, VehicleOwnershipType)
 
 """Maintenance Visit
 Vehicle
@@ -43,6 +43,7 @@ model
 year
 vehicle_type
 state
+ownership_type
 current_km
 last_visit_date
 visits
@@ -229,7 +230,14 @@ def create_new_maintenance_visit(doc, reminding_date=None):
         doc = AttrDict(json.loads(doc))
     elif isinstance(doc, dict):
         doc = AttrDict(doc)
-
+    # get vahicle
+    vehicle = frappe.get_doc("Vehicle KA", doc.vehicle)
+    if vehicle is None:
+        frappe.throw("Vehicle not found")
+        return 
+    # create a maintenace visit only if rented
+    if vehicle.state != VehicleOwnershipType.RENTED:
+        return 
     mv = frappe.new_doc("Maintenance Visit KA")
     mv.vehicle = doc.vehicle
     mv.vehicle_year = doc.vehicle_year
