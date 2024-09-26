@@ -7,6 +7,7 @@ const VehicleStatus = {
 
     NOTIFIED: "Notified",
     EARLY_NOTIFIED: "Early Notified",
+    IN_GARAGE: "In Garage",
 
     PENDING_APPROVAL: "Pending Approval",
 
@@ -55,6 +56,7 @@ frappe.ui.form.on("Maintenance Visit KA", {
                 case VehicleStatus.OVERDUE:
                 case VehicleStatus.NOTIFIED:
                 case VehicleStatus.EARLY_NOTIFIED:
+                case VehicleStatus.IN_GARAGE:
                     frm.doc.checked_at = frm.doc.modified;
                     break;
             }
@@ -102,6 +104,7 @@ frappe.ui.form.on("Maintenance Visit KA", {
 
             case VehicleStatus.NOTIFIED:
             case VehicleStatus.EARLY_NOTIFIED:
+            case VehicleStatus.IN_GARAGE:
                 // Prevent the default submit action
                 frappe.validated = false;
                 frappe.prompt(
