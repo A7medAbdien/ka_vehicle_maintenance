@@ -237,7 +237,7 @@ def create_new_maintenance_visit(doc, reminding_date=None):
     mv.last_km = doc.new_km
     mv.new_km = doc.new_km
     mv.reminding_date = reminding_date
-    mv.maintenance_date = add_to_date(reminding_date, days=3)
+    mv.maintenance_date = add_to_date(reminding_date, days=1)
     mv.save()
     # show success message
     # frappe.msgprint("New Maintenance Visit created successfully.")

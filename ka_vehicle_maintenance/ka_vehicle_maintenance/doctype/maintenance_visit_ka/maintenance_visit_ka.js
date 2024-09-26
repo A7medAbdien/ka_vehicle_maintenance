@@ -13,6 +13,7 @@ const VehicleStatus = {
     UPCOMING: "Upcoming",
     UNCHECKED: "Unchecked",
 };
+const differanceBWMaintenanceAndRemindingDate = -1
 
 frappe.ui.form.on("Maintenance Visit KA", {
     state(frm) {
@@ -43,7 +44,7 @@ frappe.ui.form.on("Maintenance Visit KA", {
         //     frm.set_value("maintenance_date", date);
         // }
         if (!frm.doc.reminding_date && frm.doc.maintenance_date) {
-            var date = frappe.datetime.add_days(frm.doc.maintenance_date, -3);
+            var date = frappe.datetime.add_days(frm.doc.maintenance_date, differanceBWMaintenanceAndRemindingDate);
             frm.set_value("reminding_date", date);
         }
     },
