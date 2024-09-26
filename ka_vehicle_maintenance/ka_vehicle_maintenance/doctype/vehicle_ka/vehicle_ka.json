@@ -13,6 +13,11 @@
   "current_km",
   "last_visit_date",
   "status_details_section",
+  "ownership_status",
+  "ownership_type",
+  "r_or_g",
+  "column_break_ijmj",
+  "maintenace_visit_status",
   "called",
   "need_visit",
   "visited",
@@ -144,11 +149,37 @@
    "label": "Did the Rider Visit the Garage Late?",
    "options": "No\nYes",
    "read_only": 1
+  },
+  {
+   "fieldname": "ownership_status",
+   "fieldtype": "Heading",
+   "label": "Ownership Status"
+  },
+  {
+   "fieldname": "ownership_type",
+   "fieldtype": "Select",
+   "label": "Ownership Type",
+   "options": "LTO\nRental"
+  },
+  {
+   "fieldname": "r_or_g",
+   "fieldtype": "Select",
+   "label": "On Road or In Garage",
+   "options": "On Road\nIn Garage"
+  },
+  {
+   "fieldname": "column_break_ijmj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "maintenace_visit_status",
+   "fieldtype": "Heading",
+   "label": "Maintenace Visit Status"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-29 12:37:37.811919",
+ "modified": "2024-09-26 14:40:41.884022",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Vehicle KA",
