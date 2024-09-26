@@ -61,6 +61,14 @@ frappe.ui.form.on("Maintenance Visit KA", {
         }
     },
     before_submit(frm) {
+        var new_km = frm.doc.new_km;
+        if (!new_km || new_km == 0) {
+            frappe.validated = false;
+            frappe.throw({
+                title: __("Missing New KM"),
+                message: __("Please enter the new KM"),
+            });
+        }
         switch (frm.doc.state) {
             case VehicleStatus.PENDING_APPROVAL:
             case VehicleStatus.UNCHECKED:
