@@ -27,6 +27,17 @@ frappe.ui.form.on("Maintenance Visit KA", {
         determineState(frm);
     },
     visit_late(frm) {
+        frappe.call({
+            method: "ka_vehicle_maintenance.whitelist.sendemail"
+            , args: {
+                "args": frm.doc.name
+            }
+            , callback: function (r) {
+                if (r.message) {
+                    location.reload();
+                }
+            }
+        })
         determineState(frm);
     },
     // need_visit(frm) {
