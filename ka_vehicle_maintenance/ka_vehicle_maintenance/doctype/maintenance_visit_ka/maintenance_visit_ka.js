@@ -38,6 +38,8 @@ frappe.ui.form.on("Maintenance Visit KA", {
                 }
             }
         })
+        console.log("email sent");
+
         determineState(frm);
     },
     // need_visit(frm) {

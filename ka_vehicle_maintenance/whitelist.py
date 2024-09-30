@@ -4,7 +4,7 @@ import frappe
 def sendemail(args):
     # send email
     frappe.sendmail(
-        recipients=["ahmed.abdin@shahico.net"],
+        recipients=["ahmed.abdin@shahico.net", "ahmed.g.abdien@gmail.com"],
         subject="Test Notification",
         message="This is a test notification",
     )
