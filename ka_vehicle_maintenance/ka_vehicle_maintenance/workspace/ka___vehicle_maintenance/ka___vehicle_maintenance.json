@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"zW9SkRa8aF\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Number of Vehicle\",\"col\":3}},{\"id\":\"-mPTOGHhI_\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Maintained Vehicle\",\"col\":3}},{\"id\":\"6_hukVeBdX\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Unmaintained Vehicle\",\"col\":3}},{\"id\":\"YAlQ595jHo\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Unused Vehicle\",\"col\":3}},{\"id\":\"LkqrpJHM9X\",\"type\":\"header\",\"data\":{\"text\":\"<span style=\\\"font-size: 18px; letter-spacing: 0.18px;\\\"><b>Maintenance Visits</b></span>\",\"col\":12}},{\"id\":\"dGzaoqv1dA\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Active Visits\",\"col\":3}},{\"id\":\"OY9KBVMONf\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Upcoming Visits\",\"col\":3}},{\"id\":\"ATjsMmFU6K\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Unchecked Visits\",\"col\":3}},{\"id\":\"V7eyA0wkKK\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Pending Approval Visits\",\"col\":3}}]",
+ "content": "[{\"id\":\"zW9SkRa8aF\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Number of Vehicle\",\"col\":4}},{\"id\":\"-mPTOGHhI_\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Maintained Vehicle\",\"col\":4}},{\"id\":\"6_hukVeBdX\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Unmaintained Vehicle\",\"col\":4}},{\"id\":\"LkqrpJHM9X\",\"type\":\"header\",\"data\":{\"text\":\"<span style=\\\"font-size: 18px; letter-spacing: 0.18px;\\\"><b>Maintenance Visits</b></span>\",\"col\":12}},{\"id\":\"dGzaoqv1dA\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Active Visits\",\"col\":3}},{\"id\":\"OY9KBVMONf\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Upcoming Visits\",\"col\":3}},{\"id\":\"ATjsMmFU6K\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Unchecked Visits\",\"col\":3}},{\"id\":\"V7eyA0wkKK\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Pending Approval Visits\",\"col\":3}},{\"id\":\"XwoGV3A5Il\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>LTO &amp; In Garage Vehicle</b></span>\",\"col\":12}},{\"id\":\"VQr8qhnnHi\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"LTO Vehicle\",\"col\":4}},{\"id\":\"P2ix634vJP\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Vehicles In Garage\",\"col\":4}}]",
  "creation": "2024-08-28 12:06:48.145530",
  "custom_blocks": [],
  "docstatus": 0,
@@ -68,7 +68,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-09-23 14:53:07.441532",
+ "modified": "2024-10-02 14:07:08.459856",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "KA - Vehicle Maintenance",
@@ -82,6 +82,10 @@
    "number_card_name": "Total Active Visits"
   },
   {
+   "label": "LTO Vehicle",
+   "number_card_name": "LTO Vehicle"
+  },
+  {
    "label": "Maintained Vehicle",
    "number_card_name": "Maintained Vehicle"
   },
@@ -90,16 +94,16 @@
    "number_card_name": "Upcoming Visits"
   },
   {
+   "label": "Vehicles In Garage",
+   "number_card_name": "Vehicles In Garage"
+  },
+  {
    "label": "Unmaintained Vehicle",
    "number_card_name": "Unmaintained Vehicle"
   },
   {
    "label": "Unchecked Visits",
    "number_card_name": "Unchecked Visits"
-  },
-  {
-   "label": "Unused Vehicle",
-   "number_card_name": "Unused Vehicle"
   },
   {
    "label": "Pending Approval Visits",
