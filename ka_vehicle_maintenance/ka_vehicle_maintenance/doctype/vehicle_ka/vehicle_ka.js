@@ -13,9 +13,17 @@ const VehicleStatus = {
     UPCOMING: "Upcoming",
     UNCHECKED: "Unchecked",
 };
+const OwnershipStatus = {
+    LTO: "LTO",
+    Rental: "Rental",
+};
 
 frappe.ui.form.on("Vehicle KA", {
+    ownership_type(frm) {
+        toggleLTODoc(frm)
+    },
     onload(frm) {
+        toggleLTODoc(frm)
         translateState(frm);
         reorderChildTable(frm);
     },
@@ -27,7 +35,29 @@ frappe.ui.form.on("Vehicle KA", {
         // });
         reorderChildTable(frm);
     },
+    before_save(frm) {
+        validateLTODoc(frm)
+    }
 });
+
+const toggleLTODoc = (frm) => {
+    if (frm.doc.ownership_type == OwnershipStatus.LTO) {
+        frm.toggle_display("lto_doc", true);
+    } else {
+        frm.toggle_display("lto_doc", false);
+    }
+}
+
+const validateLTODoc = (frm) => {
+    if (frm.doc.ownership_type == OwnershipStatus.LTO && !frm.doc.lto_doc) {
+        // frm.set_value("ownership_type", OwnershipStatus.Rental)
+        // frm.save()
+        frappe.throw({
+            title: __("Missing LTO Document"),
+            message: __("Attach the LTO Document in order to save Ownership Type as LTO"),
+        });
+    }
+}
 
 // Function to reorder the child table items
 const reorderChildTable = (frm) => {
@@ -48,16 +78,7 @@ const reorderChildTable = (frm) => {
     frm.refresh_field("visits");
 };
 
-const someFuntion = () => {
-    frappe.call({
-        method: "ka_vehicle_maintenance.events.send_notification",
-        // callback: function (response) {
-        //     if (response.message) {
-        //         frappe.msgprint(__("Notification Sent Successfully"));
-        //     }
-        // },
-    });
-};
+const someFuntion = () => { };
 
 /**
  * called
@@ -106,5 +127,5 @@ const translateState = (frm) => {
             frm.set_value("visit_late", "No");
             break;
     }
-    frm.save();
+    // frm.save();
 };

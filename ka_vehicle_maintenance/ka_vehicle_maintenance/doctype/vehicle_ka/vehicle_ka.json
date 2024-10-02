@@ -15,6 +15,7 @@
   "status_details_section",
   "ownership_status",
   "ownership_type",
+  "lto_doc",
   "column_break_ijmj",
   "maintenace_visit_status",
   "called",
@@ -170,11 +171,17 @@
    "fieldname": "maintenace_visit_status",
    "fieldtype": "Heading",
    "label": "Maintenace Visit Status"
+  },
+  {
+   "fieldname": "lto_doc",
+   "fieldtype": "Attach",
+   "hidden": 1,
+   "label": "LTO Document"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-26 15:33:38.026025",
+ "modified": "2024-10-02 11:23:49.828779",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Vehicle KA",
