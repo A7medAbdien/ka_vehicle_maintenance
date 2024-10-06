@@ -28,6 +28,10 @@
  "charts": [
   {
    "width": "Half"
+  },
+  {
+   "chart": "Vehicle States",
+   "width": "Half"
   }
  ],
  "creation": "2024-08-29 12:06:12.981639",
@@ -37,7 +41,7 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2024-08-29 12:13:48.017468",
+ "modified": "2024-10-06 14:05:39.707877",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "KA - Vehicle Maintenance",
