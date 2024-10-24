@@ -55,7 +55,8 @@
   {
    "fieldname": "vehicle",
    "fieldtype": "Link",
-   "in_list_view": 1,
+   "in_filter": 1,
+   "in_standard_filter": 1,
    "label": "Vehicle",
    "options": "Vehicle KA",
    "reqd": 1
@@ -64,6 +65,8 @@
    "fetch_from": "vehicle.year",
    "fieldname": "vehicle_year",
    "fieldtype": "Int",
+   "in_filter": 1,
+   "in_standard_filter": 1,
    "label": "Vehicle Year",
    "read_only": 1
   },
@@ -76,6 +79,7 @@
   {
    "fieldname": "new_km",
    "fieldtype": "Int",
+   "in_standard_filter": 1,
    "label": "Current KM",
    "reqd": 1
   },
@@ -86,12 +90,16 @@
   {
    "fieldname": "reminding_date",
    "fieldtype": "Date",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Reminding Date"
   },
   {
    "fieldname": "maintenance_date",
    "fieldtype": "Date",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Maintenance Date",
    "reqd": 1
   },
@@ -100,14 +108,14 @@
    "fieldname": "state",
    "fieldtype": "Select",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "State",
-   "options": "\nIn Garage\nUpcoming\nUnchecked\nEarly Notified\nNotified\nServiced\nOverdue\nPending Approval",
+   "options": "\nUnused\nUpcoming\nUnchecked\nNotified\nEarly Notified\nIn Garage\nServiced\nPending Approval\nOverdue",
    "reqd": 1
   },
   {
    "fieldname": "attachment",
    "fieldtype": "Attach",
-   "in_list_view": 1,
    "label": "Attachment"
   },
   {
@@ -167,12 +175,11 @@
    "options": "No\nYes"
   },
   {
+   "default": "No",
    "fieldname": "need_visit",
    "fieldtype": "Select",
-   "hidden": 1,
    "label": "Does the Vehicle Needed Maintenance?",
-   "options": "\nNo\nYes",
-   "read_only": 1
+   "options": "No\nYes"
   },
   {
    "default": "No",
@@ -191,7 +198,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-26 16:03:27.021292",
+ "modified": "2024-10-24 13:30:37.805021",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Maintenance Visit KA",

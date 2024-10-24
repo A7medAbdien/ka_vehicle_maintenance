@@ -80,7 +80,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "State",
-   "options": "\nUnused\nUpcoming\nUnchecked\nNotified\nEarly Notified\nServiced\nPending Approval\nOverdue",
+   "options": "\nUnused\nUpcoming\nUnchecked\nNotified\nEarly Notified\nIn Garage\nServiced\nPending Approval\nOverdue",
    "reqd": 1
   },
   {
@@ -149,7 +149,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-10-24 13:01:06.761031",
+ "modified": "2024-10-24 13:30:51.722733",
  "modified_by": "Administrator",
  "module": "KA Vehicle Maintenance",
  "name": "Vehicle Visit KA",
